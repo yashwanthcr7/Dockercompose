@@ -1,0 +1,21 @@
+version : '3'
+
+services:
+ web:
+    image: ubuntu:latest
+    command: bash -c "while true; do echo hello world; sleep 10; done"
+
+ apache_backend:
+    image: yashwanthcr7/my-apache:v1.0
+    ports:
+      - "8080:80"
+
+ nginx_backend:
+    image: yashwanthcr7/my-nginx:v1.0
+    ports:
+      - "8081:80"
+
+ nginx_load_balancer:
+    image: yashwanthcr7/my-nginxlb:v1.0
+    ports:
+      - "80:80" 
